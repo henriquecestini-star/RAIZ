@@ -1,0 +1,287 @@
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg: #F7F4EF;
+    --bg-alt: #EDE8DF;
+    --surf: #FFFFFF;
+    --surf-alt: #F2EDE6;
+    --border: rgba(0, 0, 0, 0.07);
+    --border-md: rgba(0, 0, 0, 0.13);
+    --text: #1A1611;
+    --text-md: #5A5450;
+    --text-sm: #9A9690;
+    --primary: #0F5C42;
+    --primary-dk: #0A3D2B;
+    --primary-bg: #E6F4ED;
+    --accent: #FF6B5E;
+    --inc: #0A7A55;
+    --inc-bg: #E3F6EE;
+    --exp: #C13028;
+    --exp-bg: #FCEAEA;
+    --sav: #1558B0;
+    --sav-bg: #EAF0FC;
+    --warn: #9E5E00;
+    --warn-bg: #FFF4DF;
+  }
+
+  [data-theme='dark'] {
+    --bg: #0B0F0D;
+    --bg-alt: #111510;
+    --surf: #151C18;
+    --surf-alt: #1C2420;
+    --border: rgba(255, 255, 255, 0.06);
+    --border-md: rgba(255, 255, 255, 0.11);
+    --text: #E8E2D8;
+    --text-md: #888480;
+    --text-sm: #484540;
+    --primary: #2CBD88;
+    --primary-dk: #22A878;
+    --primary-bg: #0D2418;
+    --accent: #FF7A6E;
+    --inc: #2DB87A;
+    --inc-bg: #0B2318;
+    --exp: #E05555;
+    --exp-bg: #280A0A;
+    --sav: #4490E0;
+    --sav-bg: #0A1A30;
+    --warn: #D8920A;
+    --warn-bg: #201400;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: 'Outfit', 'DM Sans', system-ui, sans-serif;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  ::-webkit-scrollbar { width: 3px; height: 3px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.12); border-radius: 4px; }
+
+  input[type='range'] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 5px;
+    border-radius: 99px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+  }
+}
+
+
+FILE: package.json  (50 lines)
+{
+  "name": "raiz-app",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+  },
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-dropdown-menu": "^2.1.2",
+    "@radix-ui/react-progress": "^1.1.0",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-slider": "^1.2.1",
+    "@radix-ui/react-toast": "^1.2.2",
+    "@radix-ui/react-tooltip": "^1.1.4",
+    "@tanstack/react-query": "^5.62.7",
+    "canvas-confetti": "^1.9.3",
+    "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-hook-form": "^7.54.1",
+    "react-router-dom": "^7.0.2",
+    "recharts": "^2.13.3",
+    "tailwind-merge": "^2.5.5",
+    "zustand": "^5.0.2",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.13",
+    "@types/react-dom": "^18.3.1",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^9.15.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  }
+}
+
+FILE: tsconfig.json  (27 lines)
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+
+
+FILE: vite.config.ts  (10 lines)
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
+
+export default defineConfig({
+  plugins: [react()],
+  resolve: {
+    alias: { '@': path.resolve(__dirname, './src') },
+  },
+})
+
+
+FILE: tailwind.config.ts  (48 lines)
+// tailwind.config.ts
+import type { Config } from 'tailwindcss'
+
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: ['selector', '[data-theme="dark"]'],
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Outfit', 'DM Sans', 'system-ui', 'sans-serif'],
+        body:    ['DM Sans', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        forest: { 50: '#E6F4ED', 100: '#C2E6D4', 500: '#0F5C42', 700: '#0A3D2B' },
+        coral:  { 50: '#FFF0EE', 500: '#FF6B5E', 700: '#E55245' },
+        sand:   { 50: '#FDFAF5', 100: '#F7F4EF', 200: '#EDE8DF' },
+      },
+      borderRadius: {
+        '2xl': '16px',
+        '3xl': '20px',
+        '4xl': '24px',
+      },
+      boxShadow: {
+        sm:   '0 1px 3px rgba(0,0,0,0.06)',
+        md:   '0 4px 12px rgba(0,0,0,0.08)',
+        lg:   '0 8px 30px rgba(0,0,0,0.12)',
+        glow: '0 4px 20px rgba(15,92,66,0.35)',
+      },
+      keyframes: {
+        fadeUp:  { from: { opacity: '0', transform: 'translateY(14px)' }, to: { opacity: '1', transform: 'translateY(0)' } },
+        fadeIn:  { from: { opacity: '0' }, to: { opacity: '1' } },
+        popIn:   { '0%': { opacity: '0', transform: 'scale(0.88)' }, '70%': { transform: 'scale(1.04)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+        shimmer: { '0%': { backgroundPosition: '-200% 0' }, '100%': { backgroundPosition: '200% 0' } },
+        spin:    { to: { transform: 'rotate(360deg)' } },
+        pulse:   { '0%,100%': { opacity: '1' }, '50%': { opacity: '0.5' } },
+        float:   { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-4px)' } },
+      },
+      animation: {
+        'fade-up':  'fadeUp 0.35s ease both',
+        'fade-in':  'fadeIn 0.25s ease both',
+        'pop-in':   'popIn 0.3s ease both',
+        'shimmer':  'shimmer 1.5s infinite',
+        'float':    'float 3s ease-in-out infinite',
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config
+
+
+FILE: postcss.config.js  (6 lines)
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+}
+
+
+FILE: index.html  (17 lines)
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/raiz.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0F5C42" />
+    <title>Raiz — Copiloto Financeiro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+========================================================================
+TOTAL: 28 arquivos · 3,369 linhas de código
+========================================================================
